@@ -14,6 +14,7 @@ const messageRouter=(require("./routes/message.router"))
 
 const app=express()
 const server=createServer(app)
+const PORT=8080
 
 const io =new Server(server, {
     pingTimeout: 60000,
@@ -23,11 +24,15 @@ const io =new Server(server, {
     }
   });
 
+app.get('/',(req,res)=>{
+  res.send("API is running SUCCESSFULLY")
+})
+
 app.use(cors())
 app.use(express.json())
 connectDB()
 
-PORT=8080
+
 
 
 

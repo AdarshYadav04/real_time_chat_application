@@ -27,6 +27,8 @@ app.use(cors())
 app.use(express.json())
 connectDB()
 
+PORT=8080
+
 
 
 
@@ -71,7 +73,7 @@ app.use("/api/messages",messageRouter)
 
 mongoose.connection.once("open",()=>{
     console.log("connected to database")
-    server.listen(process.env.PORT ,()=>{
+    server.listen(process.env.PORT || PORT ,()=>{
         console.log(`Server is Running on PORT ${process.env.PORT}`)
     })
 })
